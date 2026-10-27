@@ -5,7 +5,7 @@
 
 ---
 
-## (a) Assignment Information
+## Assignment Information
 * **Assignment Number:** 5
 * **Gene:** MYH3
 * **Official Name:** Myosin heavy chain 3
@@ -50,6 +50,7 @@ for (x in c("data", "results", "figures")) {
 }
 
 * **2. Gene Retrieval:** Search NCBI Gene for human MYH3 and record summary info
+
 hits <- entrez_search(
   db = "gene", term = paste0(gene_symbol, "[Gene Name] AND txid9606[Organism]"), retmax = 20
 )
@@ -72,6 +73,7 @@ writeLines(c(
 ), "results/gene_summary.txt")
 
 * **3. Protein Sequence Retrieval:** Fetch transcript record, extract protein accession, and download FASTA
+
 gb <- entrez_fetch(db = "nuccore", id = transcript_accession, rettype = "gb", retmode = "text")
 pat <- '/protein_id="NP_[0-9]+[.][0-9]+"' 
 fragment <- regmatches(gb, regexpr(pat, gb))
@@ -83,6 +85,7 @@ writeLines(protein_fasta, fasta_file)
 writeLines(paste("NP accession:", protein_accession), "results/protein_accession.txt")
 
 * **4. Protein Analysis:** Calculate length, count standard amino acids, and generate composition plot
+
 fasta_lines <- readLines(fasta_file)
 sequence <- paste(fasta_lines[!grepl("^>", fasta_lines)], collapse = "")
 aa <- strsplit(toupper(sequence), "")[[1]]
@@ -99,6 +102,7 @@ fig1 <- ggplot(results, aes(AminoAcid, Count)) +
 ggsave("figures/01_amino_acid_composition.png", fig1, width = 8, height = 5, dpi = 300)
 
 * **5. Variant Review & Biological Visualization:** Generate linear protein coordinate map for variant position
+
 if (nzchar(variant_protein)) {
   matched <- regmatches(variant_protein, regexpr("[0-9]+", variant_protein))
   position <- as.integer(matched)
@@ -115,7 +119,7 @@ if (nzchar(variant_protein)) {
   }
 }
 
-## (d) Results and Figures
+## Results and Figures
 
 * **Transcript Accession:** NM_002470.4
 * **Retrieved Protein Accession:** NP_002461.1 (Length: 1,940 amino acids)
@@ -126,7 +130,7 @@ if (nzchar(variant_protein)) {
 * `results/amino_acid_composition.csv`: Tabulated counts of all 20 standard amino acids.
 * `data/MYH3_protein.fasta`: Reference protein sequence.
 
-### Figures
+### Figures:
 1. **Figure 1:** `[Amino Acid Composition Plot](figures/01_amino_acid_composition.png)`
    - **Interpretation:** Displays counts for all 20 standard amino acids in the MYH3 protein, showing that Leucine (L), Glutamic acid (E), and Lysine (K) are the most frequent residues. This profile describes global amino-acid abundance but does not reveal 3D folding or disease mechanisms.
 
@@ -150,10 +154,10 @@ Computational tools also predict that p.Arg672His is deleterious. For example, C
 These predictions are consistent with the known structure of the myosin motor domain, but they are supportive evidence rather than proof of pathogenicity on their own.
 The pathogenic classification of MYH3 p.Arg672His is supported by converging evidence. Clinically, the variant is recurrently found in individuals with Freeman–Sheldon syndrome. Experimentally, it has been shown to cause defects in myosin function. Computationally, it is predicted to be deleterious and may disrupt ATP binding and motor-domain activity. Together, these findings indicate that p.Arg672His impairs embryonic myosin function, reduces effective muscle contraction during development, and contributes to the congenital contractures and craniofacial features of Freeman–Sheldon syndrome. 
 
-### ## Molecular Causal Chain
+### Molecular Causal Chain
 Gene (MYH3) ➔ Protein (Embryonic Myosin) ➔ Molecular Function (ATP-Driven Actin Sliding) ➔ Variant (p.Arg672His) ➔ Effect (Impaired Force Generation and Abnormal Contractility)
 
-## (f) Limitations and Validation Experiment
+## Limitations and Validation Experiment
 
 * **Limitations:** Sequence analysis and linear position mapping only provide structural context; they cannot directly measure in vivo motor kinetics, actin-sliding dynamics, or clinical severity variations.
 * **Validation Experiment:** An *in vitro* motility assay or recombinant ATPase activity assay comparing wild-type and p.Arg672His mutant myosin proteins to directly measure force generation and enzymatic kinetics.
