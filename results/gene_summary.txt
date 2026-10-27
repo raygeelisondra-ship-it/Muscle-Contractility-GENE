@@ -1,0 +1,4 @@
+Gene symbol: MYH3
+NCBI Gene ID: 4621
+Official name: myosin heavy chain 3
+Chromosome: 17
