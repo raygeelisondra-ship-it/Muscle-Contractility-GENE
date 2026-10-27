@@ -1,9 +1,7 @@
 # Molecular Mechanisms of Muscle Contractility
 
 * **Student Name:** Ray Gee J. Lisondra
-* **Course:** Cell and Molecular Biology | Organism: Homo sapiens
-
----
+* **Course:** Cell and Molecular Biology
 
 ## Assignment Information
 * **Assignment Number:** 5
@@ -32,7 +30,6 @@
 
 ## Research Question
 How does the pathogenic missense variant p.Arg672His in the MYH3 gene structurally and functionally impact embryonic myosin heavy chain motor activity?
-
 
 ## Methods
 * **1. Project Setup:**  Install and load required packages, define parameters, and create subfolders
