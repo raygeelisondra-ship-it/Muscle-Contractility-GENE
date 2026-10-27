@@ -162,6 +162,7 @@ Gene (MYH3) ➔ Protein (Embryonic Myosin) ➔ Molecular Function (ATP-Driven Ac
 * **Limitations:** Sequence analysis and linear position mapping only provide structural context; they cannot directly measure in vivo motor kinetics, actin-sliding dynamics, or clinical severity variations.
 * **Validation Experiment:** An *in vitro* motility assay or recombinant ATPase activity assay comparing wild-type and p.Arg672His mutant myosin proteins to directly measure force generation and enzymatic kinetics.
 
+### Questions to answer
  * **1. What does your assigned gene encode, and how does this protein contribute to muscle function?**
 MYH3 encodes the embryonic heavy chain isoform of myosin (Myosin-3), a molecular motor that powers muscle contraction during fetal development by hydrolyzing ATP and interacting with actin thin filaments.
 
